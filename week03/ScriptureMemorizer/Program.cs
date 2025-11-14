@@ -4,6 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
+
+        //For extra credit I added a "go back" feature that will restore the last three hidden words.
+
+
+
         //Set the scripture reference
         Reference reference = new Reference("Helemans", 5, 12);
         //Set the scripture text
@@ -24,14 +29,22 @@ class Program
                 break;
             }
             //Ask if the userwants to continue or quit
-            Console.Write("Press enter to continue or type 'quit' to finish: ");
+            Console.Write("\"quit\" to finish and \"go back\" to restore last hidden words: ");
             string input = Console.ReadLine();
             if (input == "quit")
             {
                 break;
             }
-            //Hide random words
-            scripture.HideRandomWords();
+            else if (input == "go back")
+            {
+                scripture.ShowLastHiddenWords();
+            }
+            else 
+            {
+                Console.WriteLine("Invalid input. Continuing to hide words.");
+                //Hide random words
+                scripture.HideRandomWords();
+            }
         }
     }
 }

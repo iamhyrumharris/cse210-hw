@@ -3,7 +3,7 @@ public class Scripture
     // Attributes
     Reference _reference;
     List<Word> _words = new List<Word>();
-    HashSet<int> _randomWordNumbers = new HashSet<int>();
+    List<int> _randomWordNumbers = new List<int>();
     
 
 
@@ -37,10 +37,23 @@ public class Scripture
                     continue;
                 }
             _randomWordNumbers.Add(randNum);
-            _words[randNum].Hide();
+            _words[_randomWordNumbers.Last()].Hide();
         }
 
 
+    }
+
+    public void ShowLastHiddenWords()
+    {
+        if (_randomWordNumbers.Count == 0)
+        {
+            return;
+        }
+        for (int i = 1; i < 4; i++)
+        {
+            _words[_randomWordNumbers.Last()].Show();
+            _randomWordNumbers.RemoveAt(_randomWordNumbers.Count - 1);
+        }
     }
 
     //This will return the string text of the scripture and any words that are hidden will show as underscores.
